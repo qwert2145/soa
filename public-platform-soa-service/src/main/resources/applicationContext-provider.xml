@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	   xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+	<!-- 开启注解配置 -->
+	<context:annotation-config />
+	<!-- 扫描service层 -->
+	<context:component-scan base-package="com.womai.platform.service.impl" />
+	<!-- 开启事务注解驱动 -->
+	<tx:annotation-driven />
+
+	<bean id="accountsService" class="com.womai.platform.service.impl.AccountsServiceImpl">
+		<property name="accountsMapper" ref="accountsMapper"  />
+	</bean>
+
+	<!-- http common -->
+	<bean id="httpClient4Manager" class="com.womai.common.utils.MultiThreadHttpClient4Manager">
+        <!-- 设置连接超时时间 -->
+        <property name="timeout" value="80"></property>
+        <!-- 设置读超时时间 -->
+        <property name="readTimeout" value="200"></property>
+        <!-- 设置每个主机的连接数 -->
+        <property name="perhostMaxConnection" value="200"></property>
+        <!-- 设置总的连接数 -->
+        <property name="totalMaxConnection" value="500"></property>
+        <!-- 设置http池超时时间 -->
+        <property name="waitTimeout" value="100"></property>
+        <!-- 设置是否重定向 -->
+        <property name="redirect" value="true"></property>
+	</bean>
+
+	<!--dubbo 配置 -->
+	<dubbo:application name="${dubbo.application.name}" />
+	<dubbo:registry address="${dubbo.registry.address}"
+		protocol="${dubbo.registry.protocol}" group="${dubbo.registry.group}" />
+	<dubbo:protocol port="-1" threads="300" />
+	<dubbo:service interface="com.womai.platform.api.service.AccountsService"
+		ref="accountsService" timeout="60000" />
+</beans>

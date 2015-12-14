@@ -1,0 +1,8 @@
+.idea/
+public-platform-soa.iml
+public-platform-soa-api/public-platform-soa-api.iml
+public-platform-soa-dao/public-platform-soa-dao.iml
+public-platform-soa-service/public-platform-soa-service.iml
+public-platform-soa-api/target/
+public-platform-soa-dao/target/
+public-platform-soa-service/target/

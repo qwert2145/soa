@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<profilesXml xmlns="http://maven.apache.org/PROFILES/1.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/PROFILES/1.0.0 http://maven.apache.org/xsd/profiles-1.0.0.xsd">
+
+	<profiles>
+		<profile>
+			<activation>
+				<os>
+					<family>Windows</family>
+				</os>
+			</activation>
+			<id>local</id>
+			<properties>
+				<jdbc.url>jdbc:mysql://ip:3306/数据库?useUnicode=true&amp;amp;characterEncoding=utf-8&amp;amp;autoReconnect=true&amp;amp;failOverReadOnly=false&amp;amp;zeroDateTimeBehavior=convertToNull</jdbc.url>
+				<jdbc.username></jdbc.username>
+				<jdbc.password></jdbc.password>
+				<dubbo.application.name>platform-service</dubbo.application.name>
+				<dubbo.registry.protocol>zookeeper</dubbo.registry.protocol>
+				<dubbo.registry.address>zookeeper地址:2181,zookeeper地址:2181,zookeeper地址:2181</dubbo.registry.address>
+				<dubbo.registry.group>/dubbo/platform/local-front</dubbo.registry.group>
+				<log4j.rootCategory>debug, main ,stdout</log4j.rootCategory>
+				<useCache>true</useCache>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>test</id>
+			<properties>
+				<jdbc.url>jdbc:mysql://ip:3306/数据库?useUnicode=true&amp;amp;characterEncoding=utf-8&amp;amp;autoReconnect=true&amp;amp;failOverReadOnly=false&amp;amp;zeroDateTimeBehavior=convertToNull</jdbc.url>
+				<jdbc.username></jdbc.username>
+				<jdbc.password></jdbc.password>
+				<dubbo.application.name>platform-service</dubbo.application.name>
+				<dubbo.registry.protocol>zookeeper</dubbo.registry.protocol>
+				<dubbo.registry.address>zookeeper:2181,zookeeper:2181,zookeeper:2181</dubbo.registry.address>
+				<dubbo.registry.group>/dubbo/platform/test</dubbo.registry.group>
+				<log4j.rootCategory>debug, main</log4j.rootCategory>
+				<useCache>true</useCache>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>pro</id>
+			<properties>
+				<jdbc.url>jdbc:mysql://ip:3306/数据库?useUnicode=true&amp;amp;characterEncoding=utf-8&amp;amp;autoReconnect=true&amp;amp;failOverReadOnly=false&amp;amp;zeroDateTimeBehavior=convertToNull</jdbc.url>
+				<jdbc.username></jdbc.username>
+				<jdbc.password></jdbc.password>
+				<dubbo.application.name>platform-service</dubbo.application.name>
+				<dubbo.registry.protocol>zookeeper</dubbo.registry.protocol>
+				<dubbo.registry.address>zookeeper:2181,zookeeper:2181,zookeeper:2181,zookeeper:2181,zookeeper:2181</dubbo.registry.address>
+				<dubbo.registry.group>/dubbo/platform/com</dubbo.registry.group>
+				<log4j.rootCategory>debug, main</log4j.rootCategory>
+
+				<useCache>true</useCache>
+			</properties>
+		</profile>
+
+	</profiles>
+</profilesXml>
