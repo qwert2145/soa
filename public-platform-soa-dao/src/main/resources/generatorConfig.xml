@@ -20,7 +20,7 @@
 
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
 			connectionURL="jdbc:mysql://ip/数据库?useUnicode=true&amp;characterEncoding=UTF-8&amp;zeroDateTimeBehavior=convertToNull"
-			userId="root" password="devroot!%">
+			userId="" password="">
 		</jdbcConnection>
 
 		<javaTypeResolver>
